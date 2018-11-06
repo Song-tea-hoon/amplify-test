@@ -9,15 +9,20 @@
             a { color: #FF9900; }
             h1 { font-weight: 300; }
             h2 { text-align: center; }
+            input{ font-size: 13px; padding: 1em; }
+
             .app { width: 100%; }
             .app-header { color: white; text-align: center; background: linear-gradient(30deg, #f90 55%, #FFC300); width: 100%; margin: 0 0 1em 0; padding: 3em 0 3em 0; box-shadow: 1px 2px 4px rgba(0, 0, 0, .3); }
             .app-logo { width: 126px; margin: 0 auto; }
             .app-body { width: 400px; margin: 0 auto; text-align: center; }
-            .app-body.signin{ width: auto; }
             .app-body button { background-color: #FF9900; font-size: 14px; color: white; text-transform: uppercase; padding: 1em; border: none; }
             .app-body button:hover { opacity: 0.8; }
 
-            input{ font-size: 13px; padding: 1em; box-sizing: border-box; }
+            .width-auto{ width: auto; }
+            .signin, .signout{ display: none; }
+            .confirm{ display: none; }
+            .resultwrap{position: fixed; display:block; width:100%; bottom:0;}
+            #AuthResult{width: 50%; margin:0 auto; padding:10px; text-align: center; background: #FF9900;}
         </style>
     </head>
     <body>
@@ -28,17 +33,41 @@
                 </div>
                 <h1>Welcome to AWS Amplify</h1>
             </div>
-            <div class="app-body">
+            <!-- <div class="app-body">
                 <button id="AnalyticsEventButton">Generate Analytics Event</button>
                 <div id="AnalyticsResult"></div>
-            </div>
-            <h2>Sign in</h2>
-            <div class="app-body signin">
+            </div> -->
+            <div class="app-body width-auto">
+                <h2>Sign up</h2>
                 <label>ID : </label>
                 <input type="text" id="username">
                 <label>PASSWORD : </label>
                 <input type="password" id="password">
-                <button id="SigninButton">Create an account</button>
+                <button id="SignupButton">Create an account</button>
+                <div class="confirm">
+                    <h2>confirm code</h2>
+                    <label>CODE : </label>
+                    <input type="password" id="confirmcode">
+                    <button id="ConfirmSigninButton">Confirm</button>
+                </div>
+            </div>
+            
+            <div class="app-body width-auto signin">
+                <h2>Sign in</h2>
+                <label>ID : </label>
+                <input type="text" id="signinusername">
+                <label>PASSWORD : </label>
+                <input type="password" id="signinpassword">
+                <button id="SigninButton">Sign in</button>
+            </div>
+
+            <div class="app-body width-auto signout">
+                <h2>Sign out</h2>
+                <button id="SignoutButton">Sign out</button>
+            </div>
+
+            <div class="resultwrap">
+                <div id="AuthResult"></div>
             </div>
         </div>
         <script src="main.bundle.js"></script>
